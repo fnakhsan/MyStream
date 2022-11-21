@@ -10,12 +10,12 @@ namespace MyStream.Utils
 {
     public static class ApiHelper
     {
-        public static readonly string baseUrl = "https://reqres.in/api/";
+        public static readonly string baseUrl = "https://api.consumet.org/";
         public static async Task<string> GetAll()
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "users"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/servers/spy-x-family-episode-1"))
                 {
                     using(HttpContent content = response.Content)
                     {
