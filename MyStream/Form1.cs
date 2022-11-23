@@ -28,6 +28,7 @@ namespace MyStream
         public Form1()
         {
             InitializeComponent();
+            userControl11.Hide();
             //backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             //backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             //backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
@@ -103,6 +104,17 @@ namespace MyStream
         private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            userControl11.Show();
+            userControl11.BringToFront();
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+            
         }
 
         //private void backgroundWorker1_DoWork(

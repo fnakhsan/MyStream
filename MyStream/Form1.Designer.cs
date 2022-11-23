@@ -36,6 +36,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.serviceController1 = new System.ServiceProcess.ServiceController();
             this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
+            this.button2 = new System.Windows.Forms.Button();
+            this.userControl11 = new MyStream.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +89,32 @@
             this.axVLCPlugin21.Size = new System.Drawing.Size(675, 417);
             this.axVLCPlugin21.TabIndex = 9;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(714, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // userControl11
+            // 
+            this.userControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl11.Location = new System.Drawing.Point(0, 0);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(842, 714);
+            this.userControl11.TabIndex = 11;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 714);
+            this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.axVLCPlugin21);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
@@ -114,6 +137,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.ServiceProcess.ServiceController serviceController1;
         private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
+        private System.Windows.Forms.Button button2;
+        private UserControl1 userControl11;
     }
 }
 
