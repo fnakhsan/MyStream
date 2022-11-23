@@ -32,10 +32,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.serviceController1 = new System.ServiceProcess.ServiceController();
+            this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
+            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -67,17 +68,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(15, 69);
-            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(672, 415);
-            this.axWindowsMediaPlayer1.TabIndex = 8;
-            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(419, 18);
@@ -88,12 +78,21 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
+            // axVLCPlugin21
+            // 
+            this.axVLCPlugin21.Enabled = true;
+            this.axVLCPlugin21.Location = new System.Drawing.Point(12, 64);
+            this.axVLCPlugin21.Name = "axVLCPlugin21";
+            this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
+            this.axVLCPlugin21.Size = new System.Drawing.Size(675, 417);
+            this.axVLCPlugin21.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 714);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.ClientSize = new System.Drawing.Size(842, 714);
+            this.Controls.Add(this.axVLCPlugin21);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
@@ -101,7 +100,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,9 +110,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.ServiceProcess.ServiceController serviceController1;
+        private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
     }
 }
 

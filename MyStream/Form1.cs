@@ -46,8 +46,10 @@ namespace MyStream
             textBox1.Text = serverList[1].url;
             //webBrowser1.Navigate("https://gogohd.net/streaming.php?id=MTg4Mzgx&title=Spy+x+Family+Episode+12");
             richTextBox1.Text = ApiHelper.JsonFormatting(response);
-            axWindowsMediaPlayer1.URL = "https://c-an-ca4.betterstream.cc:2223/hls-playback/b2325f15f875af1546c9697c8233c7513ed01882593048c114e0c2195b3d6130c3e55f42189da4861143dc0edb591969c3beb7ed16a5cbbee0a75bae793d1d2b95c8bbe94c2f21d4c20098c29dabf298589ce166406ddad131f8fbe26f4db90f86223e8d13bd96153dada9b2dd97611c1774f4a2c15cc0bad5aeebd1bf9e36a86dc1be897b53503d3ad5185de8ef1b80/index-f3-v1-a1.m3u8";
-            axWindowsMediaPlayer1.settings.autoStart = true;
+            //axWindowsMediaPlayer1.URL = "https://wwwx12.gogocdn.stream/videos/hls/fLhhC6zkdoMrrY2e_Uk9FQ/1669112123/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8";
+            //axWindowsMediaPlayer1.settings.autoStart = true;
+            axVLCPlugin21.playlist.add("https://wwwx12.gogocdn.stream/videos/hls/vpDypoCYa2YT1VAXOfM8tQ/1669138115/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8");
+            axVLCPlugin21.playlist.play();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
