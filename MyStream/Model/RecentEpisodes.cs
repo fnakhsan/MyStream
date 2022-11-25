@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace MyStream.Model
 {
-    public class Rootobject
+    internal class RecentEpisode
     {
         public int currentPage { get; set; }
         public bool hasNextPage { get; set; }
         public Result[] results { get; set; }
-    }
 
-    public class Result
-    {
-        public string id { get; set; }
-        public string episodeId { get; set; }
-        public int episodeNumber { get; set; }
-        public string title { get; set; }
-        public string image { get; set; }
-        public string url { get; set; }
+        public class Result
+        {
+            public string id { get; set; }
+            public string episodeId { get; set; }
+            public int episodeNumber { get; set; }
+            public string title { get; set; }
+            public string image { get; set; }
+            public string url { get; set; }
+        }
     }
 }

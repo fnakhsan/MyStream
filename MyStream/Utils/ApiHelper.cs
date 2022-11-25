@@ -27,7 +27,26 @@ namespace MyStream.Utils
                     }
                 }
             }
-            return string.Empty;
+            return String.Empty;
+        }
+
+        public static async Task<string> GetRecentEpisodes()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/recent-episodes"))
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        string data = await content.ReadAsStringAsync();
+                        if (data != null)
+                        {
+                            return data;
+                        }
+                    }
+                }
+            }
+            return String.Empty;
         }
 
         public static string JsonFormatting(string jsonstr)

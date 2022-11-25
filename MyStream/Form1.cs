@@ -21,7 +21,6 @@ namespace MyStream
 {
     public partial class Form1 : Form
     {
-        //private BackgroundWorker backgroundWorker1;
         //private Button downloadButton;
         //private ProgressBar progressBar1;
         //private XmlDocument document = null;
@@ -29,11 +28,6 @@ namespace MyStream
         public Form1()
         {
             InitializeComponent();
-            //userControl11.Hide();
-            //backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            //backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            //backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,16 +37,18 @@ namespace MyStream
             axVLCPlugin21.playlist.play();
         }
 
-        private void Populate_Items() 
+        private async void Populate_Items()
         {
-            ListItem[] listItem = new ListItem[20];
+            var response = await ApiHelper.GetRecentEpisodes();
+            RecentEpisode recentEpisodeList = JsonConvert.DeserializeObject<RecentEpisode>(response);
+            ListItem[] listItem = new ListItem[recentEpisodeList.results.Length];
 
-            for (int i = 0; i < listItem.Length; i++)
+            for (int i = 0; i < recentEpisodeList.results.Length; i++)
             {
                 listItem[i] = new ListItem();
-                listItem[i].Title = "Test 123";
-                listItem[i].Episode = "1";
-                listItem[i].Picture = Resources.Logo;
+                listItem[i].Title = recentEpisodeList.results[i].title;
+                listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
+                listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
                 if (flowLayoutPanel1.Controls.Count < 0)
                 {
                     flowLayoutPanel1.Controls.Clear();
@@ -81,7 +77,7 @@ namespace MyStream
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -140,7 +136,7 @@ namespace MyStream
 
         private void userControl11_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
