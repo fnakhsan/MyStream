@@ -1,4 +1,5 @@
 ﻿using MyStream.Model;
+using MyStream.Properties;
 using MyStream.Utils;
 using Newtonsoft.Json;
 using System;
@@ -28,11 +29,36 @@ namespace MyStream
         public Form1()
         {
             InitializeComponent();
-            userControl11.Hide();
+            //userControl11.Hide();
             //backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             //backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             //backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Populate_Items();
+            axVLCPlugin21.playlist.add("https://cache.387e6278d8e06083d813358762e0ac63.com/67ed5da6-6c61-11ed-84ed-246e963a41ed.m3u8?videoid=222937727069");
+            axVLCPlugin21.playlist.play();
+        }
+
+        private void Populate_Items() 
+        {
+            ListItem[] listItem = new ListItem[20];
+
+            for (int i = 0; i < listItem.Length; i++)
+            {
+                listItem[i] = new ListItem();
+                listItem[i].Title = "Test 123";
+                listItem[i].Episode = "1";
+                listItem[i].Picture = Resources.Logo;
+                if (flowLayoutPanel1.Controls.Count < 0)
+                {
+                    flowLayoutPanel1.Controls.Clear();
+                }
+                else flowLayoutPanel1.Controls.Add(listItem[i]);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -44,13 +70,13 @@ namespace MyStream
         {
             var response = await ApiHelper.GetAll();
             List<Server> serverList = JsonConvert.DeserializeObject<List<Server>>(response);
-            textBox1.Text = serverList[1].url;
+            //textBox1.Text = serverList[1].url;
             //webBrowser1.Navigate("https://gogohd.net/streaming.php?id=MTg4Mzgx&title=Spy+x+Family+Episode+12");
             richTextBox1.Text = ApiHelper.JsonFormatting(response);
             //axWindowsMediaPlayer1.URL = "https://wwwx12.gogocdn.stream/videos/hls/fLhhC6zkdoMrrY2e_Uk9FQ/1669112123/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8";
             //axWindowsMediaPlayer1.settings.autoStart = true;
-            axVLCPlugin21.playlist.add("https://wwwx12.gogocdn.stream/videos/hls/vpDypoCYa2YT1VAXOfM8tQ/1669138115/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8");
-            axVLCPlugin21.playlist.play();
+            //axVLCPlugin21.playlist.add("https://wwwx12.gogocdn.stream/videos/hls/vpDypoCYa2YT1VAXOfM8tQ/1669138115/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8");
+            //axVLCPlugin21.playlist.play();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -108,13 +134,18 @@ namespace MyStream
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            userControl11.Show();
-            userControl11.BringToFront();
+            //userControl11.Show();
+            //userControl11.BringToFront();
         }
 
         private void userControl11_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void backgroundWorker1_DoWork(
