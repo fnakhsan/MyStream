@@ -54,7 +54,15 @@ namespace MyStream
                     flowLayoutPanel1.Controls.Clear();
                 }
                 else flowLayoutPanel1.Controls.Add(listItem[i]);
+                listItem[i].Cursor = Cursors.Hand;
+                listItem[i].Click += new EventHandler(OnClick);
             }
+        }
+
+        private void OnClick(Object sender, EventArgs e)
+        {
+            ListItem itemClicked = (ListItem)sender;
+            MessageBox.Show(itemClicked.Title);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
