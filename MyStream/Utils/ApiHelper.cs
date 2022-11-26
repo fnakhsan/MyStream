@@ -11,11 +11,11 @@ namespace MyStream.Utils
     public static class ApiHelper
     {
         public static readonly string baseUrl = "https://api.consumet.org/";
-        public static async Task<string> GetAll()
+        public static async Task<string> GetStreaming(string episodeId)
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/servers/spy-x-family-episode-1"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/watch/{episodeId}"))
                 {
                     using(HttpContent content = response.Content)
                     {

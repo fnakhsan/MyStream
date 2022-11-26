@@ -16,6 +16,13 @@ namespace MyStream
         {
             InitializeComponent();
         }
+        private string episodeId;
+
+        public string EpisodeId
+        {
+            get { return episodeId; }
+            set { episodeId = value; }
+        }
 
         private string title;
 
@@ -41,7 +48,5 @@ namespace MyStream
             get { return picture; }
             set { picture = value; pictureBox1.Image = value; }
         }
-
-
     }
 }

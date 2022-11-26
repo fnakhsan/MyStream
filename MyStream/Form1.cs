@@ -49,6 +49,7 @@ namespace MyStream
                 listItem[i].Title = recentEpisodeList.results[i].title;
                 listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
                 listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
+                listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
                 if (flowLayoutPanel1.Controls.Count < 0)
                 {
                     flowLayoutPanel1.Controls.Clear();
@@ -62,6 +63,9 @@ namespace MyStream
         private void OnClick(Object sender, EventArgs e)
         {
             ListItem itemClicked = (ListItem)sender;
+            Form2 form2 = new Form2();
+            form2.Show();
+            Form2.episodeId = itemClicked.EpisodeId;
             MessageBox.Show(itemClicked.Title);
         }
 
@@ -72,11 +76,11 @@ namespace MyStream
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var response = await ApiHelper.GetAll();
-            List<Server> serverList = JsonConvert.DeserializeObject<List<Server>>(response);
+            //var response = await ApiHelper.GetAll();
+            //List<Server> serverList = JsonConvert.DeserializeObject<List<Server>>(response);
             //textBox1.Text = serverList[1].url;
             //webBrowser1.Navigate("https://gogohd.net/streaming.php?id=MTg4Mzgx&title=Spy+x+Family+Episode+12");
-            richTextBox1.Text = ApiHelper.JsonFormatting(response);
+            //richTextBox1.Text = ApiHelper.JsonFormatting(response);
             //axWindowsMediaPlayer1.URL = "https://wwwx12.gogocdn.stream/videos/hls/fLhhC6zkdoMrrY2e_Uk9FQ/1669112123/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8";
             //axWindowsMediaPlayer1.settings.autoStart = true;
             //axVLCPlugin21.playlist.add("https://wwwx12.gogocdn.stream/videos/hls/vpDypoCYa2YT1VAXOfM8tQ/1669138115/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8");

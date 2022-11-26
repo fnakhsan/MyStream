@@ -12,9 +12,12 @@ namespace MyStream
 {
     public partial class UserControl1 : UserControl
     {
+        public static UserControl1 instance;
         public UserControl1()
         {
             InitializeComponent();
+            instance = this;
+
         }
 
         private void panel1_Paint_1(object sender, PaintEventArgs e)
@@ -36,7 +39,7 @@ namespace MyStream
         {
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = Image.FromFile("D:\\GDSC\\asset_1.png");
-            flowLayoutPanel1.Controls.Add(pictureBox);
+            
         }
     }
 }
