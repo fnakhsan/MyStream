@@ -28,20 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.serviceController1 = new System.ServiceProcess.ServiceController();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRecent = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
+            this.btnTop = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.axVLCPlugin21);
+            this.panel1.Controls.Add(this.btnTop);
+            this.panel1.Controls.Add(this.btnRecent);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -49,11 +51,29 @@
             this.panel1.Size = new System.Drawing.Size(842, 56);
             this.panel1.TabIndex = 0;
             // 
+            // btnRecent
+            // 
+            this.btnRecent.Location = new System.Drawing.Point(436, 0);
+            this.btnRecent.Name = "btnRecent";
+            this.btnRecent.Size = new System.Drawing.Size(200, 56);
+            this.btnRecent.TabIndex = 2;
+            this.btnRecent.Text = "New Releases";
+            this.btnRecent.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(318, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(90, 30);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(288, 30);
+            this.richTextBox1.Size = new System.Drawing.Size(300, 30);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -65,14 +85,14 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(842, 658);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // axVLCPlugin21
+            // btnTop
             // 
-            this.axVLCPlugin21.Enabled = true;
-            this.axVLCPlugin21.Location = new System.Drawing.Point(568, 17);
-            this.axVLCPlugin21.Name = "axVLCPlugin21";
-            this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(218, 25);
-            this.axVLCPlugin21.TabIndex = 1;
+            this.btnTop.Location = new System.Drawing.Point(642, 0);
+            this.btnTop.Name = "btnTop";
+            this.btnTop.Size = new System.Drawing.Size(200, 56);
+            this.btnTop.TabIndex = 3;
+            this.btnTop.Text = "Top Airing";
+            this.btnTop.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -86,7 +106,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -97,7 +116,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
+        private System.Windows.Forms.Button btnRecent;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnTop;
     }
 }
 
