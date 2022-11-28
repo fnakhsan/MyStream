@@ -338,6 +338,7 @@
     <Compile Include="ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\TopAiring.cs" />
     <Compile Include="Model\RecentEpisodes.cs" />
     <Compile Include="Model\StreamList.cs" />
     <Compile Include="Program.cs" />

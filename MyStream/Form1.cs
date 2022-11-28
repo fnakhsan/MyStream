@@ -33,8 +33,6 @@ namespace MyStream
         private void Form1_Load(object sender, EventArgs e)
         {
             Populate_Items();
-            axVLCPlugin21.playlist.add("https://cache.387e6278d8e06083d813358762e0ac63.com/67ed5da6-6c61-11ed-84ed-246e963a41ed.m3u8?videoid=222937727069");
-            axVLCPlugin21.playlist.play();
         }
 
         private async void Populate_Items()
@@ -87,21 +85,11 @@ namespace MyStream
             //axVLCPlugin21.playlist.play();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             //ProcessStartInfo psi = new ProcessStartInfo(@"D:\Dev\dekstop\ani-cli\ani-cli.exe");
             //psi.Arguments = "--login -i D:\\Dev\\dekstop\\ani-cli\\ani-cli  E://Work/Voice/Temp";
             //Process p = Process.Start(psi);
-        }
-
-        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void downloadButton_Click(object sender, EventArgs e)
@@ -130,30 +118,53 @@ namespace MyStream
             //}
         }
 
-        private void progressBar1_Click(object sender, EventArgs e)
+        private async void btnRecent_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+            var response = await ApiHelper.GetRecentEpisodes();
+            RecentEpisode recentEpisodeList = JsonConvert.DeserializeObject<RecentEpisode>(response);
+            ListItem[] listItem = new ListItem[recentEpisodeList.results.Length];
 
+            for (int i = 0; i < recentEpisodeList.results.Length; i++)
+            {
+                listItem[i] = new ListItem();
+                listItem[i].Title = recentEpisodeList.results[i].title;
+                listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
+                listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
+                listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
+                if (flowLayoutPanel1.Controls.Count < 0)
+                {
+                    flowLayoutPanel1.Controls.Clear();
+                }
+                else flowLayoutPanel1.Controls.Add(listItem[i]);
+                listItem[i].Cursor = Cursors.Hand;
+                listItem[i].Click += new EventHandler(OnClick);
+            }
         }
 
-        private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
+        private async void btnTop_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
+            var response = await ApiHelper.GetTopAiring();
+            TopAiring topAiringList = JsonConvert.DeserializeObject<TopAiring>(response);
+            ListItem[] listItem = new ListItem[topAiringList.results.Length];
 
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            //userControl11.Show();
-            //userControl11.BringToFront();
-        }
-
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            for (int i = 0; i < topAiringList.results.Length; i++)
+            {
+                listItem[i] = new ListItem();
+                listItem[i].Title = topAiringList.results[i].title;
+                var genre = string.Join(", ", topAiringList.results[i].genres);
+                listItem[i].Episode = genre;
+                listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(topAiringList.results[i].image).GetResponse().GetResponseStream());
+                //listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
+                if (flowLayoutPanel1.Controls.Count < 0)
+                {
+                    flowLayoutPanel1.Controls.Clear();
+                }
+                else flowLayoutPanel1.Controls.Add(listItem[i]);
+                listItem[i].Cursor = Cursors.Hand;
+                listItem[i].Click += new EventHandler(OnClick);
+            }
         }
 
         //private void backgroundWorker1_DoWork(

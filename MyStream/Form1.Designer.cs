@@ -31,11 +31,11 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.serviceController1 = new System.ServiceProcess.ServiceController();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTop = new System.Windows.Forms.Button();
             this.btnRecent = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnTop = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,16 @@
             this.panel1.Size = new System.Drawing.Size(842, 56);
             this.panel1.TabIndex = 0;
             // 
+            // btnTop
+            // 
+            this.btnTop.Location = new System.Drawing.Point(642, 0);
+            this.btnTop.Name = "btnTop";
+            this.btnTop.Size = new System.Drawing.Size(200, 56);
+            this.btnTop.TabIndex = 3;
+            this.btnTop.Text = "Top Airing";
+            this.btnTop.UseVisualStyleBackColor = true;
+            this.btnTop.Click += new System.EventHandler(this.btnTop_Click);
+            // 
             // btnRecent
             // 
             this.btnRecent.Location = new System.Drawing.Point(436, 0);
@@ -59,6 +69,7 @@
             this.btnRecent.TabIndex = 2;
             this.btnRecent.Text = "New Releases";
             this.btnRecent.UseVisualStyleBackColor = true;
+            this.btnRecent.Click += new System.EventHandler(this.btnRecent_Click);
             // 
             // btnSearch
             // 
@@ -82,23 +93,14 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 56);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(842, 658);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(842, 612);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btnTop
-            // 
-            this.btnTop.Location = new System.Drawing.Point(642, 0);
-            this.btnTop.Name = "btnTop";
-            this.btnTop.Size = new System.Drawing.Size(200, 56);
-            this.btnTop.TabIndex = 3;
-            this.btnTop.Text = "Top Airing";
-            this.btnTop.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 714);
+            this.ClientSize = new System.Drawing.Size(842, 668);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

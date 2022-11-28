@@ -49,6 +49,25 @@ namespace MyStream.Utils
             return String.Empty;
         }
 
+        public static async Task<string> GetTopAiring()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/top-airing"))
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        string data = await content.ReadAsStringAsync();
+                        if (data != null)
+                        {
+                            return data;
+                        }
+                    }
+                }
+            }
+            return String.Empty;
+        }
+
         public static string JsonFormatting(string jsonstr)
         {
             JToken token = JToken.Parse(jsonstr);
