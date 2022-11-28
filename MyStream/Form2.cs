@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MyStream.Model;
+using MyStream.Utils;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,9 +24,12 @@ namespace MyStream
             episodeId = string.Empty;
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private async void Form2_Load(object sender, EventArgs e)
         {
-
+            var response = await ApiHelper.GetStreaming(episodeId);
+            StreamList streamList = JsonConvert.DeserializeObject<StreamList>(response);
+            axVLCPlugin21.playlist.add(streamList.sources[1].url);
+            axVLCPlugin21.playlist.play();
         }
     }
 }

@@ -64,8 +64,8 @@ namespace MyStream
         {
             ListItem itemClicked = (ListItem)sender;
             Form2 form2 = new Form2();
-            form2.Show();
             Form2.episodeId = itemClicked.EpisodeId;
+            form2.Show();
             MessageBox.Show(itemClicked.Title);
         }
 
