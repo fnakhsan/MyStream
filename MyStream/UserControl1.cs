@@ -41,5 +41,15 @@ namespace MyStream
             pictureBox.Image = Image.FromFile("D:\\GDSC\\asset_1.png");
             
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCategoryContent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
