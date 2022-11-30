@@ -32,6 +32,7 @@ namespace MyStream
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            userControl11.Hide();
             Populate_Items();
         }
 
@@ -67,6 +68,15 @@ namespace MyStream
             MessageBox.Show(itemClicked.Title);
         }
 
+        private void OnClickInfo(Object sender, EventArgs e)
+        {
+            ListItem itemClicked = (ListItem)sender;
+            UserControl1.animeId = itemClicked.EpisodeId;
+            userControl11.Visible = true;
+            userControl11.Show();
+            userControl11.BringToFront();
+            MessageBox.Show(itemClicked.Title);
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -156,14 +166,14 @@ namespace MyStream
                 var genre = string.Join(", ", topAiringList.results[i].genres);
                 listItem[i].Episode = genre;
                 listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(topAiringList.results[i].image).GetResponse().GetResponseStream());
-                //listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
+                listItem[i].EpisodeId = topAiringList.results[i].id;
                 if (flowLayoutPanel1.Controls.Count < 0)
                 {
                     flowLayoutPanel1.Controls.Clear();
                 }
                 else flowLayoutPanel1.Controls.Add(listItem[i]);
                 listItem[i].Cursor = Cursors.Hand;
-                listItem[i].Click += new EventHandler(OnClick);
+                listItem[i].Click += new EventHandler(OnClickInfo);
             }
         }
 

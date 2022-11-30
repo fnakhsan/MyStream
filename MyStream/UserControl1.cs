@@ -13,11 +13,12 @@ namespace MyStream
     public partial class UserControl1 : UserControl
     {
         public static UserControl1 instance;
+        public static string animeId;
         public UserControl1()
         {
             InitializeComponent();
             instance = this;
-
+            animeId = string.Empty;
         }
 
         private void panel1_Paint_1(object sender, PaintEventArgs e)
@@ -35,21 +36,24 @@ namespace MyStream
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = Image.FromFile("D:\\GDSC\\asset_1.png");
-            
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblCategoryContent_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblGenre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            instance.Hide();
         }
     }
 }
