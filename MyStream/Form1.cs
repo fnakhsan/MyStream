@@ -32,7 +32,6 @@ namespace MyStream
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            userControl11.Hide();
             Populate_Items();
         }
 
@@ -71,12 +70,12 @@ namespace MyStream
         private void OnClickInfo(Object sender, EventArgs e)
         {
             ListItem itemClicked = (ListItem)sender;
-            UserControl1.animeId = itemClicked.EpisodeId;
-            userControl11.Visible = true;
-            userControl11.Show();
-            userControl11.BringToFront();
+            Form3 form3 = new Form3();
+            Form3.animeId = itemClicked.EpisodeId;
+            form3.Show();
             MessageBox.Show(itemClicked.Title);
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

@@ -36,9 +36,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.userControl11 = new MyStream.UserControl1();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,19 +90,11 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.userControl11);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 56);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(842, 612);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // userControl11
-            // 
-            this.userControl11.Location = new System.Drawing.Point(3, 3);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(839, 609);
-            this.userControl11.TabIndex = 0;
             // 
             // Form1
             // 
@@ -118,7 +108,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -132,7 +121,6 @@
         private System.Windows.Forms.Button btnRecent;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnTop;
-        private UserControl1 userControl11;
     }
 }
 

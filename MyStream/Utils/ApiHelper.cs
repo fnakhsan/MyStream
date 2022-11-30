@@ -68,6 +68,25 @@ namespace MyStream.Utils
             return String.Empty;
         }
 
+        public static async Task<string> GetAnimeInfo(string animeId)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/info/{animeId}"))
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        string data = await content.ReadAsStringAsync();
+                        if (data != null)
+                        {
+                            return data;
+                        }
+                    }
+                }
+            }
+            return String.Empty;
+        }
+
         public static string JsonFormatting(string jsonstr)
         {
             JToken token = JToken.Parse(jsonstr);

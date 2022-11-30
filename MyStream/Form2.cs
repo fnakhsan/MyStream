@@ -28,8 +28,11 @@ namespace MyStream
         {
             var response = await ApiHelper.GetStreaming(episodeId);
             StreamList streamList = JsonConvert.DeserializeObject<StreamList>(response);
-            axVLCPlugin21.playlist.add(streamList.sources[1].url);
-            axVLCPlugin21.playlist.play();
+            if (streamList.sources[1].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[1].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
     }
 }
