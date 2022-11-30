@@ -338,19 +338,20 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListEpisode.cs">
+    <Compile Include="Items\ListEpisode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListEpisode.Designer.cs">
+    <Compile Include="Items\ListEpisode.Designer.cs">
       <DependentUpon>ListEpisode.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListItem.cs">
+    <Compile Include="Items\ListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListItem.Designer.cs">
+    <Compile Include="Items\ListItem.Designer.cs">
       <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AnimeInfo.cs" />
+    <Compile Include="Model\AnimeSearch.cs" />
     <Compile Include="Model\TopAiring.cs" />
     <Compile Include="Model\RecentEpisodes.cs" />
     <Compile Include="Model\StreamList.cs" />
@@ -372,10 +373,10 @@
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListEpisode.resx">
+    <EmbeddedResource Include="Items\ListEpisode.resx">
       <DependentUpon>ListEpisode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListItem.resx">
+    <EmbeddedResource Include="Items\ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -442,7 +443,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.4\build\Fody.targets')" />

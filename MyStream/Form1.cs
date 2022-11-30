@@ -176,6 +176,30 @@ namespace MyStream
             }
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var response = await ApiHelper.GetAnime(rtbSearch.Text.ToString());
+            AnimeSearch animeSearch = JsonConvert.DeserializeObject<AnimeSearch>(response);
+            ListItem[] listItem = new ListItem[animeSearch.results.Length];
+
+            for (int i = 0; i < animeSearch.results.Length; i++)
+            {
+                listItem[i] = new ListItem();
+                listItem[i].Title = animeSearch.results[i].title;
+                listItem[i].Episode = animeSearch.results[i].releaseDate;
+                listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(animeSearch.results[i].image).GetResponse().GetResponseStream());
+                listItem[i].EpisodeId = animeSearch.results[i].id;
+                if (flowLayoutPanel1.Controls.Count < 0)
+                {
+                    flowLayoutPanel1.Controls.Clear();
+                }
+                else flowLayoutPanel1.Controls.Add(listItem[i]);
+                listItem[i].Cursor = Cursors.Hand;
+                listItem[i].Click += new EventHandler(OnClickInfo);
+            }
+        }
+
         //private void backgroundWorker1_DoWork(
         //object sender,
         //DoWorkEventArgs e)

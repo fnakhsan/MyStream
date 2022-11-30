@@ -11,13 +11,14 @@ namespace MyStream.Utils
     public static class ApiHelper
     {
         public static readonly string baseUrl = "https://api.consumet.org/";
-        public static async Task<string> GetStreaming(string episodeId)
+
+        public static async Task<string> GetAnime(string query)
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/watch/{episodeId}"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/{query}"))
                 {
-                    using(HttpContent content = response.Content)
+                    using (HttpContent content = response.Content)
                     {
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
@@ -73,6 +74,25 @@ namespace MyStream.Utils
             using (HttpClient httpClient = new HttpClient())
             {
                 using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/info/{animeId}"))
+                {
+                    using (HttpContent content = response.Content)
+                    {
+                        string data = await content.ReadAsStringAsync();
+                        if (data != null)
+                        {
+                            return data;
+                        }
+                    }
+                }
+            }
+            return String.Empty;
+        }
+
+        public static async Task<string> GetStreaming(string episodeId)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/watch/{episodeId}"))
                 {
                     using (HttpContent content = response.Content)
                     {

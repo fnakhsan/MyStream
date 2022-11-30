@@ -34,7 +34,7 @@
             this.btnTop = new System.Windows.Forms.Button();
             this.btnRecent = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbSearch = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +44,7 @@
             this.panel1.Controls.Add(this.btnTop);
             this.panel1.Controls.Add(this.btnRecent);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.rtbSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -79,14 +79,15 @@
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // richTextBox1
+            // rtbSearch
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 12);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(300, 30);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rtbSearch.Location = new System.Drawing.Point(12, 12);
+            this.rtbSearch.Name = "rtbSearch";
+            this.rtbSearch.Size = new System.Drawing.Size(300, 30);
+            this.rtbSearch.TabIndex = 0;
+            this.rtbSearch.Text = "";
             // 
             // flowLayoutPanel1
             // 
@@ -116,7 +117,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ServiceProcess.ServiceController serviceController1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnRecent;
         private System.Windows.Forms.Button btnSearch;
