@@ -17,6 +17,8 @@ namespace MyStream
     {
         public static Form2 instance;
         public static string episodeId;
+        string response;
+        StreamList streamList;
         public Form2()
         {
             InitializeComponent();
@@ -26,13 +28,57 @@ namespace MyStream
 
         private async void Form2_Load(object sender, EventArgs e)
         {
-            var response = await ApiHelper.GetStreaming(episodeId);
-            StreamList streamList = JsonConvert.DeserializeObject<StreamList>(response);
+            response = await ApiHelper.GetStreaming(episodeId);
+            streamList = JsonConvert.DeserializeObject<StreamList>(response);
             if (streamList.sources[1].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[1].url);
                 axVLCPlugin21.playlist.play();
             }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (streamList.sources[1].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[1].url);
+                axVLCPlugin21.playlist.play();
+            }
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn360p_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn480p_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn720p_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn1080p_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

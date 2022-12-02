@@ -69,5 +69,25 @@ namespace MyStream.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap skip_next_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("skip_next_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap skip_previous_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("skip_previous_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
