@@ -15,7 +15,7 @@ namespace MyStream.Model
             public string Referer { get; set; }
         }
 
-        public Source[] sources { get; set; }
+        public List<Source> sources { get; set; }
 
         public class Source
         {

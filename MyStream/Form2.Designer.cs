@@ -38,7 +38,6 @@
             this.btn360p = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
-            this.btnPlay = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -75,7 +74,6 @@
             this.panel2.Controls.Add(this.btn360p);
             this.panel2.Controls.Add(this.btnDefault);
             this.panel2.Controls.Add(this.btnPause);
-            this.panel2.Controls.Add(this.btnPlay);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -88,7 +86,7 @@
             // 
             this.btn1080p.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn1080p.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn1080p.Location = new System.Drawing.Point(1020, 0);
+            this.btn1080p.Location = new System.Drawing.Point(868, 0);
             this.btn1080p.Name = "btn1080p";
             this.btn1080p.Size = new System.Drawing.Size(152, 76);
             this.btn1080p.TabIndex = 8;
@@ -100,7 +98,7 @@
             // btn720p
             // 
             this.btn720p.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn720p.Location = new System.Drawing.Point(868, 0);
+            this.btn720p.Location = new System.Drawing.Point(716, 0);
             this.btn720p.Name = "btn720p";
             this.btn720p.Size = new System.Drawing.Size(152, 76);
             this.btn720p.TabIndex = 9;
@@ -112,7 +110,7 @@
             // btn480p
             // 
             this.btn480p.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn480p.Location = new System.Drawing.Point(716, 0);
+            this.btn480p.Location = new System.Drawing.Point(564, 0);
             this.btn480p.Name = "btn480p";
             this.btn480p.Size = new System.Drawing.Size(152, 76);
             this.btn480p.TabIndex = 7;
@@ -124,46 +122,37 @@
             // btn360p
             // 
             this.btn360p.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn360p.Location = new System.Drawing.Point(564, 0);
+            this.btn360p.Location = new System.Drawing.Point(412, 0);
             this.btn360p.Name = "btn360p";
             this.btn360p.Size = new System.Drawing.Size(152, 76);
             this.btn360p.TabIndex = 6;
             this.btn360p.Text = "360p";
             this.btn360p.UseVisualStyleBackColor = true;
+            this.btn360p.Visible = false;
             this.btn360p.Click += new System.EventHandler(this.btn360p_Click);
             // 
             // btnDefault
             // 
             this.btnDefault.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDefault.Location = new System.Drawing.Point(412, 0);
+            this.btnDefault.Location = new System.Drawing.Point(260, 0);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(152, 76);
             this.btnDefault.TabIndex = 5;
             this.btnDefault.Text = "Default";
             this.btnDefault.UseVisualStyleBackColor = true;
             this.btnDefault.Visible = false;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
             // btnPause
             // 
             this.btnPause.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPause.Location = new System.Drawing.Point(260, 0);
+            this.btnPause.Location = new System.Drawing.Point(108, 0);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(152, 76);
             this.btnPause.TabIndex = 4;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPlay.Location = new System.Drawing.Point(108, 0);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(152, 76);
-            this.btnPlay.TabIndex = 3;
-            this.btnPlay.Text = "Play";
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // panel4
             // 
@@ -235,7 +224,6 @@
         private System.Windows.Forms.Button btn360p;
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Button btnPause;
-        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnPrevious;
