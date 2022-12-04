@@ -129,27 +129,47 @@ namespace MyStream
 
         private void btn360p_Click(object sender, EventArgs e)
         {
-
+            if (streamList.sources[p360].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[p360].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
 
         private void btn480p_Click(object sender, EventArgs e)
         {
-
+            if (streamList.sources[p480].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[p480].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
 
         private void btn720p_Click(object sender, EventArgs e)
         {
-
+            if (streamList.sources[p720].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[p720].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
 
         private void btn1080p_Click(object sender, EventArgs e)
         {
-
+            if (streamList.sources[p1080].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[p1080].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
 
         private void btnDefault_Click(object sender, EventArgs e)
         {
-
+            if (streamList.sources[pDefault].url != null)
+            {
+                axVLCPlugin21.playlist.add(streamList.sources[pDefault].url);
+                axVLCPlugin21.playlist.play();
+            }
         }
     }
 }
