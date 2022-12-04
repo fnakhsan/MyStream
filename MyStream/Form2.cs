@@ -39,7 +39,7 @@ namespace MyStream
             response = await ApiHelper.GetStreaming(episodeId);
             streamList = JsonConvert.DeserializeObject<StreamList>(response);
 
-            for (int i = 0; i < streamList.sources.Count; i++)
+            for (int i = 0; i < streamList.sources.Length; i++)
             {
                 switch (streamList.sources[i].quality)
                 {
