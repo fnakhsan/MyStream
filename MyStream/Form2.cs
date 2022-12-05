@@ -78,7 +78,8 @@ namespace MyStream
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p1080].url);
                 axVLCPlugin21.playlist.play();
-            } else if (btn720p.Visible && streamList.sources[p720].url != null)
+            }
+            else if (btn720p.Visible && streamList.sources[p720].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p720].url);
                 axVLCPlugin21.playlist.play();
@@ -132,6 +133,7 @@ namespace MyStream
             if (streamList.sources[p360].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p360].url);
+                axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
         }
@@ -141,6 +143,7 @@ namespace MyStream
             if (streamList.sources[p480].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p480].url);
+                axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
         }
@@ -150,6 +153,7 @@ namespace MyStream
             if (streamList.sources[p720].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p720].url);
+                axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
         }
@@ -159,6 +163,7 @@ namespace MyStream
             if (streamList.sources[p1080].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[p1080].url);
+                axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
         }
@@ -168,6 +173,7 @@ namespace MyStream
             if (streamList.sources[pDefault].url != null)
             {
                 axVLCPlugin21.playlist.add(streamList.sources[pDefault].url);
+                axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
         }
