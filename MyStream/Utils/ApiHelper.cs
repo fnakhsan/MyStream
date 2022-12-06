@@ -12,11 +12,11 @@ namespace MyStream.Utils
     {
         public static readonly string baseUrl = "https://api.consumet.org/";
 
-        public static async Task<string> GetAnime(string query)
+        public static async Task<string> GetAnime(string query, string page = "1")
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/{query}"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/{query}?page={page}"))
                 {
                     using (HttpContent content = response.Content)
                     {
@@ -31,11 +31,11 @@ namespace MyStream.Utils
             return String.Empty;
         }
 
-        public static async Task<string> GetRecentEpisodes()
+        public static async Task<string> GetRecentEpisodes(string page = "1")
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/recent-episodes"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/recent-episodes?page={page}"))
                 {
                     using (HttpContent content = response.Content)
                     {
@@ -50,11 +50,11 @@ namespace MyStream.Utils
             return String.Empty;
         }
 
-        public static async Task<string> GetTopAiring()
+        public static async Task<string> GetTopAiring(string page = "1")
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + "anime/gogoanime/top-airing"))
+                using (HttpResponseMessage response = await httpClient.GetAsync(baseUrl + $"anime/gogoanime/top-airing?page={page}"))
                 {
                     using (HttpContent content = response.Content)
                     {

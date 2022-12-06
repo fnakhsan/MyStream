@@ -14,6 +14,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using System.Xml;
 using static System.Net.WebRequestMethods;
 
@@ -24,7 +25,8 @@ namespace MyStream
         //private Button downloadButton;
         //private ProgressBar progressBar1;
         //private XmlDocument document = null;
-
+        private string condition = "recent";
+        private int page = 1;
         public Form1()
         {
             InitializeComponent();
@@ -32,12 +34,13 @@ namespace MyStream
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Populate_Items();
+            GetRecent();
         }
 
-        private async void Populate_Items()
+        private async void GetRecent(string page = "1")
         {
-            var response = await ApiHelper.GetRecentEpisodes();
+            flowLayoutPanel1.Controls.Clear();
+            var response = await ApiHelper.GetRecentEpisodes(page);
             RecentEpisode recentEpisodeList = JsonConvert.DeserializeObject<RecentEpisode>(response);
             ListItem[] listItem = new ListItem[recentEpisodeList.results.Length];
 
@@ -56,105 +59,29 @@ namespace MyStream
                 listItem[i].Cursor = Cursors.Hand;
                 listItem[i].Click += new EventHandler(OnClick);
             }
-        }
-
-        private void OnClick(Object sender, EventArgs e)
-        {
-            ListItem itemClicked = (ListItem)sender;
-            Form2 form2 = new Form2();
-            Form2.episodeId = itemClicked.EpisodeId;
-            form2.Show();
-            MessageBox.Show(itemClicked.Title);
-        }
-
-        private void OnClickInfo(Object sender, EventArgs e)
-        {
-            ListItem itemClicked = (ListItem)sender;
-            Form3 form3 = new Form3();
-            Form3.animeId = itemClicked.EpisodeId;
-            form3.Show();
-            MessageBox.Show(itemClicked.Title);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            //var response = await ApiHelper.GetAll();
-            //List<Server> serverList = JsonConvert.DeserializeObject<List<Server>>(response);
-            //textBox1.Text = serverList[1].url;
-            //webBrowser1.Navigate("https://gogohd.net/streaming.php?id=MTg4Mzgx&title=Spy+x+Family+Episode+12");
-            //richTextBox1.Text = ApiHelper.JsonFormatting(response);
-            //axWindowsMediaPlayer1.URL = "https://wwwx12.gogocdn.stream/videos/hls/fLhhC6zkdoMrrY2e_Uk9FQ/1669112123/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8";
-            //axWindowsMediaPlayer1.settings.autoStart = true;
-            //axVLCPlugin21.playlist.add("https://wwwx12.gogocdn.stream/videos/hls/vpDypoCYa2YT1VAXOfM8tQ/1669138115/184141/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1657688325.360.m3u8");
-            //axVLCPlugin21.playlist.play();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //ProcessStartInfo psi = new ProcessStartInfo(@"D:\Dev\dekstop\ani-cli\ani-cli.exe");
-            //psi.Arguments = "--login -i D:\\Dev\\dekstop\\ani-cli\\ani-cli  E://Work/Voice/Temp";
-            //Process p = Process.Start(psi);
-        }
-
-        private void downloadButton_Click(object sender, EventArgs e)
-        {
-            //// Start the download operation in the background.
-            //this.backgroundWorker1.RunWorkerAsync();
-
-            //// Disable the button for the duration of the download.
-            //this.downloadButton.Enabled = false;
-
-            // Once you have started the background thread you
-            // can exit the handler and the application will
-            // wait until the RunWorkerCompleted event is raised.
-
-            // Or if you want to do something else in the main thread,
-            // such as update a progress bar, you can do so in a loop
-            // while checking IsBusy to see if the background task is
-            // still running.
-
-            //while (this.backgroundWorker1.IsBusy)
-            //{
-            //    progressBar1.Increment(1);
-            //    // Keep UI messages moving, so the form remains
-            //    // responsive during the asynchronous operation.
-            //    Application.DoEvents();
-            //}
-        }
-
-        private async void btnRecent_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Controls.Clear();
-            var response = await ApiHelper.GetRecentEpisodes();
-            RecentEpisode recentEpisodeList = JsonConvert.DeserializeObject<RecentEpisode>(response);
-            ListItem[] listItem = new ListItem[recentEpisodeList.results.Length];
-
-            for (int i = 0; i < recentEpisodeList.results.Length; i++)
+            condition = "recent";
+            if (page == "1")
             {
-                listItem[i] = new ListItem();
-                listItem[i].Title = recentEpisodeList.results[i].title;
-                listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
-                listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
-                listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
-                if (flowLayoutPanel1.Controls.Count < 0)
-                {
-                    flowLayoutPanel1.Controls.Clear();
-                }
-                else flowLayoutPanel1.Controls.Add(listItem[i]);
-                listItem[i].Cursor = Cursors.Hand;
-                listItem[i].Click += new EventHandler(OnClick);
+                btnPrevious.Visible = false;
+            }
+            else
+            {
+                btnPrevious.Visible = true;
+            }
+            if (!recentEpisodeList.hasNextPage)
+            {
+                btnNext.Visible = false;
+            }
+            else
+            {
+                btnNext.Visible = true;
             }
         }
 
-        private async void btnTop_Click(object sender, EventArgs e)
+        private async void GetTop(string page = "1")
         {
             flowLayoutPanel1.Controls.Clear();
-            var response = await ApiHelper.GetTopAiring();
+            var response = await ApiHelper.GetTopAiring(page);
             TopAiring topAiringList = JsonConvert.DeserializeObject<TopAiring>(response);
             ListItem[] listItem = new ListItem[topAiringList.results.Length];
 
@@ -174,9 +101,26 @@ namespace MyStream
                 listItem[i].Cursor = Cursors.Hand;
                 listItem[i].Click += new EventHandler(OnClickInfo);
             }
+            condition = "top";
+            if (page == "1")
+            {
+                btnPrevious.Visible = false;
+            }
+            else
+            {
+                btnPrevious.Visible = true;
+            }
+            if (!topAiringList.hasNextPage)
+            {
+                btnNext.Visible = false;
+            }
+            else
+            {
+                btnNext.Visible = true;
+            }
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
+        private async void Search(string page = "1")
         {
             flowLayoutPanel1.Controls.Clear();
             var response = await ApiHelper.GetAnime(rtbSearch.Text.ToString());
@@ -198,45 +142,100 @@ namespace MyStream
                 listItem[i].Cursor = Cursors.Hand;
                 listItem[i].Click += new EventHandler(OnClickInfo);
             }
+            condition = "search";
+            if (page == "1")
+            {
+                btnPrevious.Visible = false;
+            }
+            else
+            {
+                btnPrevious.Visible = true;
+            }
+            if (!animeSearch.hasNextPage)
+            {
+                btnNext.Visible = false;
+            }
+            else
+            {
+                btnNext.Visible = true;
+            }
         }
 
-        //private void backgroundWorker1_DoWork(
-        //object sender,
-        //DoWorkEventArgs e)
-        //{
-        //    document = new XmlDocument();
+        private void OnClick(Object sender, EventArgs e)
+        {
+            ListItem itemClicked = (ListItem)sender;
+            Form2 form2 = new Form2();
+            Form2.episodeId = itemClicked.EpisodeId;
+            form2.Show();
+            MessageBox.Show(itemClicked.Title);
+        }
 
-        //    // Uncomment the following line to
-        //    // simulate a noticeable latency.
-        //    //Thread.Sleep(5000);
+        private void OnClickInfo(Object sender, EventArgs e)
+        {
+            ListItem itemClicked = (ListItem)sender;
+            Form3 form3 = new Form3();
+            Form3.animeId = itemClicked.EpisodeId;
+            form3.Show();
+            MessageBox.Show(itemClicked.Title);
+        }
 
-        //    // Replace this file name with a valid file name.
-        //    document.Load(@"http://www.tailspintoys.com/sample.xml");
-        //}
+        private void btnRecent_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            GetRecent(page.ToString());
+        }
 
-        //private void backgroundWorker1_RunWorkerCompleted(
-        //    object sender,
-        //    RunWorkerCompletedEventArgs e)
-        //{
-        //    // Set progress bar to 100% in case it's not already there.
-        //    progressBar1.Value = 100;
+        private void btnTop_Click(object sender, EventArgs e)
+        {
+            page = 1; 
+            GetTop(page.ToString());
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            Search(page.ToString());
+        }
 
-        //    if (e.Error == null)
-        //    {
-        //        MessageBox.Show(document.InnerXml, "Download Complete");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //            "Failed to download file",
-        //            "Download failed",
-        //            MessageBoxButtons.OK,
-        //            MessageBoxIcon.Error);
-        //    }
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            page--;
+            switch (condition)
+            {
+                case "recent":
+                    GetRecent(page.ToString());
+                    break;
+                case "top":
+                    GetTop(page.ToString());
+                    break;
+                case "search":
+                    Search(page.ToString());
+                    break;
+            }
+        }
 
-        //    // Enable the download button and reset the progress bar.
-        //    this.downloadButton.Enabled = true;
-        //    progressBar1.Value = 0;
-        //}
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            page++;
+            switch (condition)
+            {
+                case "recent":
+                    GetRecent(page.ToString());
+                    break;
+                case "top":
+                    GetTop(page.ToString());
+                    break;
+                case "search":
+                    Search(page.ToString());
+                    break;
+            }
+        }
+
+        private void rtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+            }
+        }
     }
 }
