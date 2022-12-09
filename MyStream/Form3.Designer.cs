@@ -43,9 +43,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listEpisode1 = new MyStream.ListEpisode();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -62,8 +67,8 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(143, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(20);
-            this.panel3.Size = new System.Drawing.Size(214, 327);
+            this.panel3.Padding = new System.Windows.Forms.Padding(20, 20, 20, 30);
+            this.panel3.Size = new System.Drawing.Size(214, 335);
             this.panel3.TabIndex = 17;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -115,7 +120,7 @@
             this.lblSynopsisContent.AutoSize = true;
             this.lblSynopsisContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSynopsisContent.Location = new System.Drawing.Point(116, 105);
-            this.lblSynopsisContent.MaximumSize = new System.Drawing.Size(500, 0);
+            this.lblSynopsisContent.MaximumSize = new System.Drawing.Size(581, 0);
             this.lblSynopsisContent.Name = "lblSynopsisContent";
             this.lblSynopsisContent.Size = new System.Drawing.Size(75, 20);
             this.lblSynopsisContent.TabIndex = 7;
@@ -152,7 +157,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(143, 327);
+            this.panel2.Size = new System.Drawing.Size(143, 335);
             this.panel2.TabIndex = 16;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -215,18 +220,65 @@
             // 
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 327);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 390);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(800, 123);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(862, 196);
             this.flowLayoutPanel2.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.listEpisode1);
+            this.panel1.Controls.Add(this.tbSearch);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 335);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10, 14, 10, 0);
+            this.panel1.Size = new System.Drawing.Size(862, 55);
+            this.panel1.TabIndex = 19;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(172, 14);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(66, 30);
+            this.tbSearch.TabIndex = 0;
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Search Episode :";
+            // 
+            // listEpisode1
+            // 
+            this.listEpisode1.AutoSize = true;
+            this.listEpisode1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.listEpisode1.EpisodeId = null;
+            this.listEpisode1.EpisodeNumber = 0;
+            this.listEpisode1.Location = new System.Drawing.Point(263, 9);
+            this.listEpisode1.Name = "listEpisode1";
+            this.listEpisode1.Size = new System.Drawing.Size(100, 40);
+            this.listEpisode1.TabIndex = 2;
+            this.listEpisode1.Visible = false;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(862, 586);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -236,6 +288,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +312,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblReleasedContent;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbSearch;
+        private ListEpisode listEpisode1;
     }
 }

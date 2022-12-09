@@ -67,12 +67,34 @@ namespace MyStream
                 listEpisode[i].EpisodeId = animeInfo.episodes[i].id;
                 listEpisode[i].EpisodeNumber = animeInfo.episodes[i].number;
                 listEpisode[i].Cursor = Cursors.Hand;
-                
+
                 if (flowLayoutPanel2.Controls.Count < 0)
                 {
                     flowLayoutPanel2.Controls.Clear();
                 }
                 else flowLayoutPanel2.Controls.Add(listEpisode[i]);
+            }
+        }
+
+        private void Search()
+        {
+
+        }
+
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+                tbSearch.Text = "";
             }
         }
     }

@@ -121,7 +121,7 @@ namespace MyStream
         private async void Search(string page = "1")
         {
             flowLayoutPanel1.Controls.Clear();
-            var response = await ApiHelper.GetAnime(rtbSearch.Text.ToString());
+            var response = await ApiHelper.GetAnime(tbSearch.Text.ToString());
             AnimeSearch animeSearch = JsonConvert.DeserializeObject<AnimeSearch>(response);
             ListItem[] listItem = new ListItem[animeSearch.results.Length];
 
