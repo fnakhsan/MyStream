@@ -22,9 +22,6 @@ namespace MyStream
 {
     public partial class Form1 : Form
     {
-        //private Button downloadButton;
-        //private ProgressBar progressBar1;
-        //private XmlDocument document = null;
         private string condition = "recent";
         private int page = 1;
         public Form1()
@@ -51,6 +48,7 @@ namespace MyStream
                 listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
                 listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
                 listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
+                listItem[i].EpisodeNumber = recentEpisodeList.results[i].episodeNumber;
                 if (flowLayoutPanel1.Controls.Count < 0)
                 {
                     flowLayoutPanel1.Controls.Clear();
@@ -133,7 +131,7 @@ namespace MyStream
                 listItem[i].Title = animeSearch.results[i].title;
                 listItem[i].Episode = animeSearch.results[i].releaseDate;
                 listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(animeSearch.results[i].image).GetResponse().GetResponseStream());
-                listItem[i].EpisodeId = animeSearch.results[i].id;
+                listItem[i].EpisodeId = animeSearch.results[i].id;           
                 if (flowLayoutPanel1.Controls.Count < 0)
                 {
                     flowLayoutPanel1.Controls.Clear();
@@ -166,6 +164,7 @@ namespace MyStream
             ListItem itemClicked = (ListItem)sender;
             Form2 form2 = new Form2();
             Form2.episodeId = itemClicked.EpisodeId;
+            Form2.episodeName = itemClicked.EpisodeNumber.ToString();
             form2.Show();
             MessageBox.Show(itemClicked.Title);
         }
@@ -190,10 +189,12 @@ namespace MyStream
             page = 1; 
             GetTop(page.ToString());
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             page = 1;
             Search(page.ToString());
+            tbSearch.Text = "";
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -230,12 +231,13 @@ namespace MyStream
             }
         }
 
-        private void rtbSearch_KeyDown(object sender, KeyEventArgs e)
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 Search();
-            }
+                tbSearch.Text = "";
+            }            
         }
     }
 }

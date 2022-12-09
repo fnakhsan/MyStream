@@ -1,4 +1,5 @@
-﻿using MyStream.Model;
+﻿using AltoHttp;
+using MyStream.Model;
 using MyStream.Utils;
 using Newtonsoft.Json;
 using System;
@@ -6,10 +7,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Permissions;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MyStream
 {
@@ -17,6 +23,7 @@ namespace MyStream
     {
         public static Form2 instance;
         public static string episodeId;
+        public static string episodeName;
         string response;
         StreamList streamList;
 
@@ -32,12 +39,14 @@ namespace MyStream
             InitializeComponent();
             instance = this;
             episodeId = string.Empty;
+            episodeName = string.Empty;
         }
 
         private async void Form2_Load(object sender, EventArgs e)
         {
             response = await ApiHelper.GetStreaming(episodeId);
             streamList = JsonConvert.DeserializeObject<StreamList>(response);
+            lblEpisode.Text = "Episode " + episodeName;
 
             for (int i = 0; i < streamList.sources.Length; i++)
             {
@@ -98,17 +107,7 @@ namespace MyStream
             {
                 axVLCPlugin21.playlist.add(streamList.sources[pBackup].url);
                 axVLCPlugin21.playlist.play();
-            }
-        }
-
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-
+            }           
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -176,6 +175,11 @@ namespace MyStream
                 axVLCPlugin21.playlist.next();
                 axVLCPlugin21.playlist.play();
             }
+        }
+
+        private void lblEpisode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

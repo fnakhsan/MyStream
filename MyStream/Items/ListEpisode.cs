@@ -37,6 +37,7 @@ namespace MyStream
         {
             Form2 form2 = new Form2();
             Form2.episodeId = EpisodeId;
+            Form2.episodeName = EpisodeNumber.ToString();
             form2.Show();
             MessageBox.Show($"Episode {EpisodeNumber}");
         }

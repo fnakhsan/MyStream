@@ -34,21 +34,21 @@
             this.btnTop = new System.Windows.Forms.Button();
             this.btnRecent = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.rtbSearch = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbSearch);
             this.panel1.Controls.Add(this.btnTop);
             this.panel1.Controls.Add(this.btnRecent);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.rtbSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -84,15 +84,6 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // rtbSearch
-            // 
-            this.rtbSearch.Location = new System.Drawing.Point(12, 12);
-            this.rtbSearch.Name = "rtbSearch";
-            this.rtbSearch.Size = new System.Drawing.Size(300, 30);
-            this.rtbSearch.TabIndex = 0;
-            this.rtbSearch.Text = "";
-            this.rtbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtbSearch_KeyDown);
             // 
             // flowLayoutPanel1
             // 
@@ -136,6 +127,15 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(12, 12);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(300, 30);
+            this.tbSearch.TabIndex = 0;
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -149,6 +149,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -158,7 +159,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ServiceProcess.ServiceController serviceController1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox rtbSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnRecent;
         private System.Windows.Forms.Button btnSearch;
@@ -166,6 +166,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }
 

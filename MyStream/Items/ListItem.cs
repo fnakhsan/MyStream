@@ -16,6 +16,7 @@ namespace MyStream
         {
             InitializeComponent();
         }
+
         private string episodeId;
 
         public string EpisodeId
@@ -23,6 +24,15 @@ namespace MyStream
             get { return episodeId; }
             set { episodeId = value; }
         }
+
+        private int episodeNumber;
+
+        public int EpisodeNumber
+        {
+            get { return episodeNumber; }
+            set { episodeNumber = value; }
+        }
+
 
         private string title;
 
