@@ -18,7 +18,7 @@ namespace MyStream
     {
         public static Form3 instance;
         public static string animeId;
-
+        AnimeInfo animeInfo;
         public Form3()
         {
             InitializeComponent();
@@ -49,7 +49,7 @@ namespace MyStream
         private async void Form3_Load(object sender, EventArgs e)
         {
             var response = await ApiHelper.GetAnimeInfo(animeId);
-            AnimeInfo animeInfo = JsonConvert.DeserializeObject<AnimeInfo>(response);
+            animeInfo = JsonConvert.DeserializeObject<AnimeInfo>(response);
             lblTitle.Text = animeInfo.title;
             pictureBox1.Image = Bitmap.FromStream(WebRequest.Create(animeInfo.image).GetResponse().GetResponseStream());
             lblCategoryContent.Text = animeInfo.type;
@@ -76,9 +76,24 @@ namespace MyStream
             }
         }
 
-        private void Search()
+        private void Search(int episode)
         {
-
+            int maxEpisode = animeInfo.episodes.Length - 1;
+            if (episode > 0)
+            {
+                episode = episode - 1;
+            }
+            if (episode > maxEpisode)
+            {
+                MessageBox.Show($"Please enter episode between {animeInfo.episodes[0].number} and {animeInfo.episodes[maxEpisode].number}");
+            }
+            else
+            {
+                listEpisode1.EpisodeId = animeInfo.episodes[episode].id;
+                listEpisode1.EpisodeNumber = animeInfo.episodes[episode].number;
+                listEpisode1.Cursor = Cursors.Hand;
+                listEpisode1.Visible = true;
+            } 
         }
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -93,7 +108,15 @@ namespace MyStream
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Search();
+                try
+                {
+                    int episode = int.Parse(tbSearch.Text);
+                    Search(episode);
+                }
+                catch (FormatException fe)
+                {
+                    Console.WriteLine(fe.Message);
+                }
                 tbSearch.Text = "";
             }
         }
