@@ -45,7 +45,7 @@ namespace MyStream
             {
                 listItem[i] = new ListItem();
                 listItem[i].Title = recentEpisodeList.results[i].title;
-                listItem[i].Episode = recentEpisodeList.results[i].episodeNumber.ToString();
+                listItem[i].Episode = "Eps : " + recentEpisodeList.results[i].episodeNumber.ToString();
                 listItem[i].Picture = Bitmap.FromStream(WebRequest.Create(recentEpisodeList.results[i].image).GetResponse().GetResponseStream());
                 listItem[i].EpisodeId = recentEpisodeList.results[i].episodeId;
                 listItem[i].EpisodeNumber = recentEpisodeList.results[i].episodeNumber;
@@ -166,7 +166,6 @@ namespace MyStream
             Form2.episodeId = itemClicked.EpisodeId;
             Form2.episodeName = itemClicked.EpisodeNumber.ToString();
             form2.Show();
-            MessageBox.Show(itemClicked.Title);
         }
 
         private void OnClickInfo(Object sender, EventArgs e)
@@ -175,7 +174,6 @@ namespace MyStream
             Form3 form3 = new Form3();
             Form3.animeId = itemClicked.EpisodeId;
             form3.Show();
-            MessageBox.Show(itemClicked.Title);
         }
 
         private void btnRecent_Click(object sender, EventArgs e)

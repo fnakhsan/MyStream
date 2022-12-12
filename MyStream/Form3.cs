@@ -31,11 +31,6 @@ namespace MyStream
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -58,6 +53,7 @@ namespace MyStream
             lblSynopsisContent.Text = animeInfo.description;
             lblReleasedContent.Text = animeInfo.releaseDate;
             lblStatusContent.Text = animeInfo.status;
+            lblSearch.Text = $"Search Episode ({animeInfo.episodes[0].number} - {animeInfo.episodes.Length}) : ";          
 
             flowLayoutPanel2.Controls.Clear();
             ListEpisode[] listEpisode = new ListEpisode[animeInfo.episodes.Length];

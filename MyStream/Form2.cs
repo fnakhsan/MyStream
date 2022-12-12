@@ -45,8 +45,8 @@ namespace MyStream
         private async void Form2_Load(object sender, EventArgs e)
         {
             response = await ApiHelper.GetStreaming(episodeId);
-            streamList = JsonConvert.DeserializeObject<StreamList>(response);
             lblEpisode.Text = "Episode " + episodeName;
+            streamList = JsonConvert.DeserializeObject<StreamList>(response);
 
             for (int i = 0; i < streamList.sources.Length; i++)
             {
@@ -80,34 +80,35 @@ namespace MyStream
 
             if (btnDefault.Visible && streamList.sources[pDefault].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[pDefault].url);
-                axVLCPlugin21.playlist.play();
+                Play(pDefault);
             }
             else if (btn1080p.Visible && streamList.sources[p1080].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p1080].url);
-                axVLCPlugin21.playlist.play();
+                Play(p1080);
             }
             else if (btn720p.Visible && streamList.sources[p720].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p720].url);
-                axVLCPlugin21.playlist.play();
+                Play(p720);
             }
             else if (btn480p.Visible && streamList.sources[p480].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p480].url);
-                axVLCPlugin21.playlist.play();
+                Play(p480);
             }
             else if (btn360p.Visible && streamList.sources[p360].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p360].url);
-                axVLCPlugin21.playlist.play();
+                Play(p360);
             }
             else if (streamList.sources[pBackup].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[pBackup].url);
-                axVLCPlugin21.playlist.play();
-            }           
+                Play(pBackup);
+            }
+        }
+
+        private void Play(int resolution)
+        {
+            axVLCPlugin21.playlist.add(streamList.sources[resolution].url);
+            axVLCPlugin21.playlist.next();
+            axVLCPlugin21.playlist.play();
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -131,9 +132,7 @@ namespace MyStream
         {
             if (streamList.sources[p360].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p360].url);
-                axVLCPlugin21.playlist.next();
-                axVLCPlugin21.playlist.play();
+                Play(p360);
             }
         }
 
@@ -141,9 +140,7 @@ namespace MyStream
         {
             if (streamList.sources[p480].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p480].url);
-                axVLCPlugin21.playlist.next();
-                axVLCPlugin21.playlist.play();
+                Play(p480);
             }
         }
 
@@ -151,9 +148,7 @@ namespace MyStream
         {
             if (streamList.sources[p720].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p720].url);
-                axVLCPlugin21.playlist.next();
-                axVLCPlugin21.playlist.play();
+                Play(p720);
             }
         }
 
@@ -161,9 +156,7 @@ namespace MyStream
         {
             if (streamList.sources[p1080].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[p1080].url);
-                axVLCPlugin21.playlist.next();
-                axVLCPlugin21.playlist.play();
+                Play(p1080);
             }
         }
 
@@ -171,15 +164,8 @@ namespace MyStream
         {
             if (streamList.sources[pDefault].url != null)
             {
-                axVLCPlugin21.playlist.add(streamList.sources[pDefault].url);
-                axVLCPlugin21.playlist.next();
-                axVLCPlugin21.playlist.play();
+                Play(pDefault);
             }
-        }
-
-        private void lblEpisode_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

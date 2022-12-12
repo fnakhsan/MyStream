@@ -161,7 +161,6 @@
             this.lblEpisode.Text = "Episode";
             this.lblEpisode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblEpisode.UseMnemonic = false;
-            this.lblEpisode.Click += new System.EventHandler(this.lblEpisode_Click);
             // 
             // Form2
             // 

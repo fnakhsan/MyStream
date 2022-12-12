@@ -31,6 +31,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.serviceController1 = new System.ServiceProcess.ServiceController();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnTop = new System.Windows.Forms.Button();
             this.btnRecent = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.tbSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(848, 56);
             this.panel1.TabIndex = 0;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(12, 12);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(300, 30);
+            this.tbSearch.TabIndex = 0;
+            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
             // btnTop
             // 
@@ -91,8 +100,8 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 56);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 687);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(30, 2, 0, 10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 629);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // panel2
@@ -127,22 +136,13 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // tbSearch
-            // 
-            this.tbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(12, 12);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(300, 30);
-            this.tbSearch.TabIndex = 0;
-            this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 743);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
