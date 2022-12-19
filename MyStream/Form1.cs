@@ -66,13 +66,13 @@ namespace MyStream
             {
                 btnPrevious.Visible = true;
             }
-            if (!recentEpisodeList.hasNextPage)
+            if (recentEpisodeList.hasNextPage)
             {
-                btnNext.Visible = false;
+                btnNext.Visible = true;
             }
             else
             {
-                btnNext.Visible = true;
+                btnNext.Visible = false;
             }
         }
 
@@ -108,20 +108,20 @@ namespace MyStream
             {
                 btnPrevious.Visible = true;
             }
-            if (!topAiringList.hasNextPage)
+            if (topAiringList.hasNextPage)
             {
-                btnNext.Visible = false;
+                btnNext.Visible = true;
             }
             else
             {
-                btnNext.Visible = true;
+                btnNext.Visible = false;
             }
         }
 
         private async void Search(string page = "1")
         {
             flowLayoutPanel1.Controls.Clear();
-            var response = await ApiHelper.GetAnime(tbSearch.Text.ToString());
+            var response = await ApiHelper.GetAnime(tbSearch.Text.ToString(), page);
             AnimeSearch animeSearch = JsonConvert.DeserializeObject<AnimeSearch>(response);
             ListItem[] listItem = new ListItem[animeSearch.results.Length];
 
@@ -149,13 +149,13 @@ namespace MyStream
             {
                 btnPrevious.Visible = true;
             }
-            if (!animeSearch.hasNextPage)
+            if (animeSearch.hasNextPage)
             {
-                btnNext.Visible = false;
+                btnNext.Visible = true;
             }
             else
             {
-                btnNext.Visible = true;
+                btnNext.Visible = false;
             }
         }
 
@@ -234,7 +234,6 @@ namespace MyStream
             if (e.KeyCode == Keys.Enter)
             {
                 Search();
-                tbSearch.Text = "";
             }            
         }
     }

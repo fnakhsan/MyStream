@@ -44,9 +44,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listEpisode1 = new MyStream.ListEpisode();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.listEpisode1 = new MyStream.ListEpisode();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -237,6 +237,18 @@
             this.panel1.Size = new System.Drawing.Size(862, 55);
             this.panel1.TabIndex = 19;
             // 
+            // listEpisode1
+            // 
+            this.listEpisode1.AutoSize = true;
+            this.listEpisode1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.listEpisode1.EpisodeId = null;
+            this.listEpisode1.EpisodeNumber = 0;
+            this.listEpisode1.Location = new System.Drawing.Point(357, 9);
+            this.listEpisode1.Name = "listEpisode1";
+            this.listEpisode1.Size = new System.Drawing.Size(100, 40);
+            this.listEpisode1.TabIndex = 2;
+            this.listEpisode1.Visible = false;
+            // 
             // tbSearch
             // 
             this.tbSearch.Dock = System.Windows.Forms.DockStyle.Left;
@@ -258,18 +270,6 @@
             this.lblSearch.Size = new System.Drawing.Size(162, 25);
             this.lblSearch.TabIndex = 1;
             this.lblSearch.Text = "Search Episode :";
-            // 
-            // listEpisode1
-            // 
-            this.listEpisode1.AutoSize = true;
-            this.listEpisode1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.listEpisode1.EpisodeId = null;
-            this.listEpisode1.EpisodeNumber = 0;
-            this.listEpisode1.Location = new System.Drawing.Point(357, 9);
-            this.listEpisode1.Name = "listEpisode1";
-            this.listEpisode1.Size = new System.Drawing.Size(100, 40);
-            this.listEpisode1.TabIndex = 2;
-            this.listEpisode1.Visible = false;
             // 
             // Form3
             // 
