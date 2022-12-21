@@ -1,9 +1,10 @@
 <h1 align="center">MyStream</h1>
 
 ## Download
-Go to the [Releases](https://github.com/fnakhsan/MyStream/releases) to download the latest APK.
+Go to the [Releases](https://github.com/fnakhsan/MyStream/releases) to download the latest App.
 
 ## Dependencies
+- **[VLC Media Player](https://www.videolan.org/vlc/download-windows.html)**.
 
 ## Features
 - **Get Recent Episodes**
